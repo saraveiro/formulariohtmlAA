@@ -12,27 +12,54 @@
        <header>
         <img id="logo" src="logo_size.jpg" alt="logo de la empresa"> 
         <h1 id="titulo">Registro iDESWEB</h1>   
+        <!--
         <nav id="menu"><ul>
          <li>INICIO</li>  
          <li>PRODUCTOS</li>   
          <li>PROYECTOS</li>   
          <li>CONTACTA</li>   
          <li>ALTA</li>    
-        </ul></nav>
+        </ul></nav>-->
+        <!-- en el menú te faltaban los enlaces-->
+        <nav id="menu" role="navigation">   
+            <ul>
+            <li class="pagina_actual"><a href="">Inicio</a></li>
+            <li><a href="">Semántica</a></li>
+            <li><a href="">Listas</a></li>
+            <li><a href="">Formularios</a></li>
+            <li><a href="">Imágenes</a></li>
+            </ul>
+        </nav>
        </header>
 
-    <section class="clearfix"></section>
+    <!--<section class="clearfix"></section>-->
 
     <main>
+        <!--Falta autocomplete para autocompletar los campos del formulario
+            <form id="crearcuenta" autocomplete="on">
+
+        -->
         <form id="crearcuenta">
-        <label id="formulario" for="crearcuenta">Crear cuenta</label>
+     <!--  Mejor con p
+        <p>Crear cuenta</p>
+        <p>Los campos obligatorios se marcan con un asterisco(*)</p>-->
+          <label id="formulario" for="crearcuenta">Crear cuenta</label>
         <p>Los campos obligatorios se marcan con un asterisco(*)</p>
-    
+    <!--aria-required en html5 es required-->
        <fieldset>
             <legend>¿Quién eres?</legend>
-           
-           <p><label for="nombre">Nombre*</label>
-           <input type="text" id="nombre" autofocus="autofocus" aria-required>
+               <p><label for="nombre">Nombre*</label>
+            <!-- es autofocus no autofocus="autofocus"-->
+            <!-- Podemos poner un pattern para el nombre de forma que solo se permitan letras y como podemos tener tildes podemos indicarlos. He puesto para cualquier nombre internacional 
+                        el pattern si solo empleamos para nombres españoles llegaría con poner
+                        [a-zA-ZáéíóúüÁÉÍÓÚÜ ]{2,15}
+                        o
+                        [a-zA-ZáéíóúüÁÉÍÓÚÜ\s]{2,15}
+                <input name='nombre' id="nombre" type='text' autocomplete="cc-name"  placeholder="Indica tu nombre" pattern="pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŃÒÓÔÖÕÙÚÛÜŲŪ ]{2,15} required autofocus /> -->
+                     <!-- Podemos poner un pattern para el nombre de forma que solo se permitan letras y como podemos tener tildes podemos indicarlos. He puesto para cualquier nombre internacional 
+                
+                <input name='apellidos' type='text' autocomplete="given-name" id="apellidos" placeholder="Indica tus apellidos" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{2,64}" required size="30"/>-->
+           <input type="text" id="nombre" autofocus="autofocus"  aria-required>
           
            <label for="apellidos">Apellidos*</label>
             <input type="text" id="apellidos" aria-required></p>
@@ -223,10 +250,12 @@
               
             <p><label for="ciudad">Ciudad</label>
             <input type="text" id="ciudad"></p>
-            
+        
             <p><label for="cp">Código postal</label>
             <input type="number" id="cp"></p> 
-            
+<!-- deberías indicar 
+    <input type="number" id="cp" max="10000" min="99999" maxlength="5">
+-->            
             <p><label for="pais">País*</label>
                 <select id="pais"  aria-required>
                     <option selected hidden>País</option>
@@ -466,15 +495,17 @@
                     <option value="ZW">Zimbabue</option>
                 </select></p> 
         </fieldset>
-        
-           
+          
         
         <fieldset>
                     <legend>¿Cómo quieres iniciar sesión?</legend>
 
                     <p><label for="usuario">Nombre de usuario*</label>
                     <input type="text" id="usuario" pattern="[A-Za-z]{4-16}" title="El nombre de usuario solo puede contener letras y números." aria-required></p>
-
+       <!-- estaría bien poner un patron como este: pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  
+                    con un  placeholder="Debe contener al menos un número y una letra mayúscula y minúscula, y al menos 8 o más caracteres"
+                no pongas autofocus más que en el primero-->
+       
                     <p><label for="contraseña">Contraseña*</label>
                     <input type="password" id="contraseña" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" title="La contraseña debe contener mayúsculas, minúsculas y números." aria-required></p>
 
@@ -502,9 +533,13 @@
        
             <p><label for="Crear cuenta" id=labelcrearcuenta>Crear cuenta</label>
             <input type="button" id="boton" value="Crear cuenta"></p>
-                
+           <!-- falta el botón de reset
+                        <input type="reset" value="Limpiar datos"/>
+
+        -->       
     
         </form>
+        <!--
         <script type="text/javascript">
         var check = function() {
   if (document.getElementById("contraseña").value ==
@@ -519,7 +554,8 @@
 
          
             
-           </script>
+           </script>  no se pide-->
+       
        </main>
     </body>
     <footer>
